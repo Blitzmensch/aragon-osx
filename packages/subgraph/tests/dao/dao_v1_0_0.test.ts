@@ -59,7 +59,6 @@ import {
   ExtendedNativeBalance,
   ExtendedNativeTransfer,
 } from '../helpers/extended-schema';
-import {createERC1155TokenCalls} from '../utils';
 import {
   getBalanceOf,
   createNewExecutedEvent,
@@ -79,6 +78,7 @@ import {
   generateTransferEntityId,
   createDummyAction,
   createERC20TokenCalls,
+  createERC1155TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {Address, Bytes, BigInt, ethereum} from '@graphprotocol/graph-ts';
 import {

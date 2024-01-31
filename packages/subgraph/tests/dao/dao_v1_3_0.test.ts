@@ -35,7 +35,6 @@ import {
   ExtendedERC1155TokenIdBalance,
   ExtendedERC1155Transfer,
 } from '../helpers/extended-schema';
-import {createERC1155TokenCalls} from '../utils';
 import {
   createNewExecutedEvent,
   encodeWithFunctionSelector,
@@ -52,6 +51,7 @@ import {
   generateTransferEntityId,
   createDummyAction,
   createERC20TokenCalls,
+  createERC1155TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {ethereum, Bytes, Address, BigInt} from '@graphprotocol/graph-ts';
 import {

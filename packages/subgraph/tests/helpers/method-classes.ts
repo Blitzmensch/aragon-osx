@@ -106,14 +106,14 @@ import {
 import {
   createGetProposalCall,
   createTotalVotingPowerCall,
-  createWrappedTokenCalls,
-  createERC1155TokenCalls,
 } from '../utils';
 import {
   generateEntityIdFromAddress,
   generatePermissionEntityId,
   generatePluginEntityId,
   createERC20TokenCalls,
+  createERC1155TokenCalls,
+  createWrappedERC20TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {
   Address,
@@ -341,7 +341,7 @@ class ERC20WrapperContractMethods extends ERC20WrapperContract {
       throw new Error('Underlying token is null');
     }
 
-    createWrappedTokenCalls(
+    createWrappedERC20TokenCalls(
       this.id,
       this.name as string,
       this.symbol as string,
