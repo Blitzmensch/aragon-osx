@@ -337,13 +337,17 @@ class ERC20WrapperContractMethods extends ERC20WrapperContract {
     } else if (!this.underlyingToken) {
       throw new Error('Underlying token is null');
     }
+    let supply = '10';
+    if (totalSupply) {
+      supply = totalSupply;
+    }
 
     createWrappedERC20TokenCalls(
       this.id,
       this.name as string,
       this.symbol as string,
       this.underlyingToken,
-      totalSupply
+      supply
     );
   }
 
@@ -374,10 +378,14 @@ class ERC20ContractMethods extends ERC20Contract {
     if (!this.symbol) {
       throw new Error('Symbol is null');
     }
+    let supply = '10';
+    if (totalSupply) {
+      supply = totalSupply;
+    }
     // we cast to string only for stoping rust compiler complaints.      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol', '6');
     createERC20TokenCalls(
       this.id,
-      totalSupply || '10',
+      supply,
       this.name as string,
       this.symbol as string,
       this.decimals.toString()
