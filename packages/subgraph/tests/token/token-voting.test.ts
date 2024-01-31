@@ -28,7 +28,7 @@ import {createDummyAction} from '@aragon/osx-commons-subgraph';
 import {bigInt, BigInt} from '@graphprotocol/graph-ts';
 import {assert, clearStore, describe, test} from 'matchstick-as/assembly/index';
 
-let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
+let action = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
 
 test('Run TokenVoting (handleProposalCreated) mappings with mock event', () => {
   // create state
@@ -43,11 +43,11 @@ test('Run TokenVoting (handleProposalCreated) mappings with mock event', () => {
   // create calls
   tokenVotingPlugin.proposalCount = BigInt.fromString(ONE);
   tokenVotingPlugin.mockCall_getProposalCountCall();
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
   proposal.mockCall_totalVotingPower();
 
   // create event
-  let event = proposal.createEvent_ProposalCreated(actions, STRING_DATA);
+  let event = proposal.createEvent_ProposalCreated([action], STRING_DATA);
 
   // handle event
   _handleProposalCreated(event, proposal.dao, STRING_DATA);
@@ -75,7 +75,7 @@ test('Run TokenVoting (handleVoteCast) mappings with mock event', () => {
 
   // create calls
   proposal.yes = bigInt.fromString(ONE);
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
   proposal.mockCall_totalVotingPower();
 
   // create event
@@ -109,7 +109,7 @@ test('Run TokenVoting (handleVoteCast) mappings with mock event', () => {
   // create calls 2
   proposal.yes = BigInt.fromString(ZERO);
   proposal.no = BigInt.fromString(ONE);
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
   proposal.mockCall_totalVotingPower();
 
   vote.voteOption = 'No';
@@ -132,7 +132,7 @@ test('Run TokenVoting (handleVoteCast) mappings with mock event', () => {
   // create calls 3
   proposal.yes = BigInt.fromString(TWO);
   proposal.no = BigInt.fromString(ZERO);
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
 
   vote.voteOption = 'Yes';
 
@@ -157,7 +157,7 @@ test('Run TokenVoting (handleVoteCast) mappings with mock event and vote option 
   let proposal = new ExtendedTokenVotingProposal().withDefaultValues();
 
   // create calls
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
 
   // create event
   let voter = new ExtendedTokenVotingVoter().withDefaultValues();
@@ -186,7 +186,7 @@ test('Run TokenVoting (handleProposalExecuted) mappings with mock event', () => 
   proposal.buildOrUpdate();
 
   // create calls
-  proposal.mockCall_getProposal(actions);
+  proposal.mockCall_getProposal([action]);
 
   // create event
   let event = proposal.createEvent_ProposalExecuted();

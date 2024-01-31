@@ -54,7 +54,7 @@ import {
 import {Address, BigInt} from '@graphprotocol/graph-ts';
 import {assert, clearStore, test} from 'matchstick-as/assembly/index';
 
-let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
+let action = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
 
 const daoAddress = Address.fromString(DAO_ADDRESS);
 const daoEntityId = generatePluginEntityId(daoAddress);
@@ -92,7 +92,7 @@ test('Run AddresslistVoting (handleProposalCreated) mappings with mock event', (
     '0', // yes
     '0', // no
 
-    actions,
+    [action],
     ALLOW_FAILURE_MAP
   );
 
@@ -258,7 +258,7 @@ test('Run AddresslistVoting (handleVoteCast) mappings with mock event', () => {
     '1', // yes
     '0', // no
 
-    actions,
+    [action],
     ALLOW_FAILURE_MAP
   );
 
@@ -335,7 +335,7 @@ test('Run AddresslistVoting (handleVoteCast) mappings with mock event', () => {
     '0', // yes
     '1', // no
 
-    actions,
+    [action],
     ALLOW_FAILURE_MAP
   );
 
@@ -382,7 +382,7 @@ test('Run AddresslistVoting (handleVoteCast) mappings with mock event', () => {
     '2', // yes
     '0', // no
 
-    actions,
+    [action],
     ALLOW_FAILURE_MAP
   );
 
@@ -443,7 +443,7 @@ test('Run AddresslistVoting (handleVoteCast) mappings with mock event and vote o
     '0', // yes
     '0', // no
 
-    actions,
+    [action],
     ALLOW_FAILURE_MAP
   );
 

@@ -73,7 +73,7 @@ test('Run Multisig (handleProposalCreated) mappings with mock event', () => {
     // approvals
     ONE,
 
-    actions,
+    [actions],
 
     ALLOW_FAILURE_MAP
   );
@@ -85,7 +85,7 @@ test('Run Multisig (handleProposalCreated) mappings with mock event', () => {
     START_DATE,
     END_DATE,
     STRING_DATA,
-    actions,
+    [actions],
     ALLOW_FAILURE_MAP,
     CONTRACT_ADDRESS
   );
@@ -200,7 +200,7 @@ test('Run Multisig (handleApproved) mappings with mock event', () => {
     // approvals
     ONE,
 
-    actions,
+    [actions],
     ALLOW_FAILURE_MAP
   );
 
@@ -270,7 +270,7 @@ test('Run Multisig (handleApproved) mappings with mock event', () => {
     // approvals
     TWO,
 
-    actions,
+    [actions],
     ALLOW_FAILURE_MAP
   );
 

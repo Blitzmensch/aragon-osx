@@ -124,7 +124,7 @@ function createExecutedEvent(
       functionData.toHexString()
     );
 
-    actions.push(action[0]);
+    actions.push(action);
   }
 
   if (execResults.length == 0) {
