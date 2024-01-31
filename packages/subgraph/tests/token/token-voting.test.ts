@@ -24,9 +24,9 @@ import {
   ExtendedTokenVotingVote,
   ExtendedTokenVotingVoter,
 } from '../helpers/extended-schema';
+import {createDummyAction} from '@aragon/osx-commons-subgraph';
 import {bigInt, BigInt} from '@graphprotocol/graph-ts';
 import {assert, clearStore, describe, test} from 'matchstick-as/assembly/index';
-import {createDummyAction} from '@aragon/osx-commons-subgraph';
 
 let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
 

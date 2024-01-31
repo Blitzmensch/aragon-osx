@@ -16,8 +16,6 @@ export function createMockGetter(
     .returns(returns);
 }
 
-
-
 export function createGetProposalCall(
   contractAddress: string,
   proposalId: string,

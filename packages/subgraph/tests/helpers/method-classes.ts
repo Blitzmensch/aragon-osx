@@ -103,10 +103,7 @@ import {
   delegatesCall,
   getProposalCountCall,
 } from '../token/utils';
-import {
-  createGetProposalCall,
-  createTotalVotingPowerCall,
-} from '../utils';
+import {createGetProposalCall, createTotalVotingPowerCall} from '../utils';
 import {
   generateEntityIdFromAddress,
   generatePermissionEntityId,

@@ -37,10 +37,7 @@ import {
   ALLOW_FAILURE_MAP,
   PROPOSAL_ENTITY_ID,
 } from '../constants';
-import {
-  createGetProposalCall,
-  createTotalVotingPowerCall,
-} from '../utils';
+import {createGetProposalCall, createTotalVotingPowerCall} from '../utils';
 import {
   createNewMembersAddedEvent,
   createNewVoteCastEvent,
