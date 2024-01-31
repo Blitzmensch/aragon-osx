@@ -51,8 +51,6 @@ let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
 
 const pluginAddress = Address.fromString(CONTRACT_ADDRESS);
 const pluginEntityId = generatePluginEntityId(pluginAddress);
-const daoAddress = Address.fromString(DAO_ADDRESS);
-const daoEntityId = generatePluginEntityId(daoAddress);
 const pluginProposalId = BigInt.fromString(PLUGIN_PROPOSAL_ID);
 
 test('Run Multisig (handleProposalCreated) mappings with mock event', () => {

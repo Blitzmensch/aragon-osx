@@ -14,7 +14,6 @@ import {VOTING_MODES} from '../../src/utils/constants';
 import {
   generateMemberEntityId,
   generateVoteEntityId,
-  generateVoterEntityId,
 } from '../../src/utils/ids';
 import {
   ADDRESS_ONE,
@@ -52,7 +51,7 @@ import {
   generatePluginEntityId,
   createDummyAction,
 } from '@aragon/osx-commons-subgraph';
-import {Address, BigInt, Bytes, log} from '@graphprotocol/graph-ts';
+import {Address, BigInt} from '@graphprotocol/graph-ts';
 import {assert, clearStore, test} from 'matchstick-as/assembly/index';
 
 let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
@@ -596,7 +595,6 @@ test('Run AddresslistVoting (handleMembersAdded) mappings with mock event', () =
     'id',
     memberEntityId
   );
-  const voter = AddresslistVotingVoter.load(memberEntityId);
   assert.fieldEquals(
     'AddresslistVotingVoter',
     memberEntityId,

@@ -1,4 +1,4 @@
-import {Address, BigInt, Bytes, ethereum} from '@graphprotocol/graph-ts';
+import {Address, BigInt, ethereum} from '@graphprotocol/graph-ts';
 import {createMockedFunction} from 'matchstick-as/assembly/index';
 
 export function createMockGetter(
