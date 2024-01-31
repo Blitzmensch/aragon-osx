@@ -106,7 +106,6 @@ import {
 import {
   createGetProposalCall,
   createTotalVotingPowerCall,
-  createTokenCalls,
   createWrappedTokenCalls,
   createERC1155TokenCalls,
 } from '../utils';
@@ -114,6 +113,7 @@ import {
   generateEntityIdFromAddress,
   generatePermissionEntityId,
   generatePluginEntityId,
+  createERC20TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {
   Address,
@@ -276,12 +276,11 @@ class ERC721ContractMethods extends ERC721Contract {
       throw new Error('Symbol is null');
     }
     // we cast to string only for stoping rust compiler complaints.
-    createTokenCalls(
-      this.id,
+    createERC20TokenCalls(
+      DAO_TOKEN_ADDRESS,
+      '10',
       this.name as string,
-      this.symbol as string,
-      null,
-      null
+      this.symbol as string
     );
   }
 }
@@ -378,13 +377,13 @@ class ERC20ContractMethods extends ERC20Contract {
     if (!this.symbol) {
       throw new Error('Symbol is null');
     }
-    // we cast to string only for stoping rust compiler complaints.
-    createTokenCalls(
+    // we cast to string only for stoping rust compiler complaints.      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol', '6');
+    createERC20TokenCalls(
       this.id,
+      totalSupply || '10',
       this.name as string,
       this.symbol as string,
-      this.decimals.toString(),
-      totalSupply
+      this.decimals.toString()
     );
   }
 

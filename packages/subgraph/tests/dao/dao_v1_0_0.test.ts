@@ -59,10 +59,7 @@ import {
   ExtendedNativeBalance,
   ExtendedNativeTransfer,
 } from '../helpers/extended-schema';
-import {
-  createERC1155TokenCalls,
-  createTokenCalls,
-} from '../utils';
+import {createERC1155TokenCalls} from '../utils';
 import {
   getBalanceOf,
   createNewExecutedEvent,
@@ -81,6 +78,7 @@ import {
   generateTransactionActionsProposalEntityId,
   generateTransferEntityId,
   createDummyAction,
+  createERC20TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {Address, Bytes, BigInt, ethereum} from '@graphprotocol/graph-ts';
 import {
@@ -260,12 +258,15 @@ describe('handleNativeTokenDeposited', () => {
 describe('handleDeposited: ', () => {
   beforeAll(() => {
     daoTokenContract = new ExtendedERC20Contract().withDefaultValues();
-    let totalSupply = '10';
-    daoTokenContract.mockCall_createTokenCalls(totalSupply);
+
+    createERC20TokenCalls(
+      DAO_TOKEN_ADDRESS,
+      ERC20_AMOUNT_FULL,
+      'DAO Token',
+      'DAOT'
+    );
     daoTokenContract.mockCall_balanceOf(DAO_ADDRESS, ERC20_AMOUNT_HALF);
     daoTokenContract.mockCall_balanceOf(DAO_TOKEN_ADDRESS, ERC20_AMOUNT_HALF);
-
-    createTokenCalls(DAO_TOKEN_ADDRESS, 'DAO Token', 'DAOT', null, null);
 
     getSupportsInterface(DAO_TOKEN_ADDRESS, ERC165_INTERFACE_ID, true);
     getSupportsInterface(
@@ -993,7 +994,7 @@ describe('handleExecuted', () => {
 
   describe('ERC20 action', () => {
     beforeAll(() => {
-      createTokenCalls(DAO_TOKEN_ADDRESS, 'name', 'symbol', '6', '10');
+      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol', '6');
       getBalanceOf(DAO_TOKEN_ADDRESS, DAO_ADDRESS, ERC20_AMOUNT_HALF);
       getBalanceOf(DAO_TOKEN_ADDRESS, DAO_TOKEN_ADDRESS, ERC20_AMOUNT_HALF);
 
@@ -1247,7 +1248,7 @@ describe('handleExecuted', () => {
 
   describe('ERC721 action', () => {
     beforeAll(() => {
-      createTokenCalls(DAO_TOKEN_ADDRESS, 'name', 'symbol', null, null);
+      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol');
 
       getSupportsInterface(DAO_TOKEN_ADDRESS, '0x01ffc9a7', true);
       getSupportsInterface(DAO_TOKEN_ADDRESS, '80ac58cd', true);

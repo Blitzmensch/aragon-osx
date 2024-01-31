@@ -30,37 +30,6 @@ export function createERC1155TokenCalls(
     .returns([ethereum.Value.fromString(uri)]);
 }
 
-export function createTokenCalls(
-  contractAddress: string,
-  name: string,
-  symbol: string,
-  decimals: string | null,
-  totalSupply: string | null
-): void {
-  createMockGetter(contractAddress, 'name', 'name():(string)', [
-    ethereum.Value.fromString(name),
-  ]);
-
-  createMockGetter(contractAddress, 'symbol', 'symbol():(string)', [
-    ethereum.Value.fromString(symbol),
-  ]);
-
-  if (decimals) {
-    createMockGetter(contractAddress, 'decimals', 'decimals():(uint8)', [
-      ethereum.Value.fromUnsignedBigInt(BigInt.fromString(decimals)),
-    ]);
-  }
-
-  if (totalSupply) {
-    createMockGetter(
-      contractAddress,
-      'totalSupply',
-      'totalSupply():(uint256)',
-      [ethereum.Value.fromUnsignedBigInt(BigInt.fromString(totalSupply))]
-    );
-  }
-}
-
 export function createWrappedTokenCalls(
   contractAddress: string,
   name: string,
@@ -73,7 +42,6 @@ export function createWrappedTokenCalls(
     ethereum.Value.fromAddress(Address.fromString(underlyingTokenAddress)),
   ]);
 }
-
 
 export function createGetProposalCall(
   contractAddress: string,

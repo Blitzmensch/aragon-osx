@@ -35,10 +35,7 @@ import {
   ExtendedERC1155TokenIdBalance,
   ExtendedERC1155Transfer,
 } from '../helpers/extended-schema';
-import {
-  createERC1155TokenCalls,
-  createTokenCalls,
-} from '../utils';
+import {createERC1155TokenCalls} from '../utils';
 import {
   createNewExecutedEvent,
   encodeWithFunctionSelector,
@@ -54,6 +51,7 @@ import {
   generateTransactionActionsProposalEntityId,
   generateTransferEntityId,
   createDummyAction,
+  createERC20TokenCalls,
 } from '@aragon/osx-commons-subgraph';
 import {ethereum, Bytes, Address, BigInt} from '@graphprotocol/graph-ts';
 import {
@@ -250,7 +248,7 @@ describe('handleExecuted', () => {
 
   describe('ERC20 action', () => {
     beforeAll(() => {
-      createTokenCalls(DAO_TOKEN_ADDRESS, 'name', 'symbol', '6', '10');
+      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol', '6');
       getBalanceOf(DAO_TOKEN_ADDRESS, DAO_ADDRESS, ERC20_AMOUNT_HALF);
       getBalanceOf(DAO_TOKEN_ADDRESS, DAO_TOKEN_ADDRESS, ERC20_AMOUNT_HALF);
 
@@ -267,7 +265,7 @@ describe('handleExecuted', () => {
 
     describe('ERC20 transfer action', () => {
       beforeAll(() => {
-        createTokenCalls(DAO_TOKEN_ADDRESS, 'name', 'symbol', null, null);
+        createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol');
 
         getSupportsInterface(DAO_TOKEN_ADDRESS, ERC165_INTERFACE_ID, true);
         getSupportsInterface(
@@ -510,7 +508,7 @@ describe('handleExecuted', () => {
 
   describe('ERC721 action', () => {
     beforeAll(() => {
-      createTokenCalls(DAO_TOKEN_ADDRESS, 'name', 'symbol', null, null);
+      createERC20TokenCalls(DAO_TOKEN_ADDRESS, '10', 'name', 'symbol');
 
       getSupportsInterface(DAO_TOKEN_ADDRESS, '0x01ffc9a7', true);
       getSupportsInterface(DAO_TOKEN_ADDRESS, '80ac58cd', true);
