@@ -24,11 +24,11 @@ import {
   ExtendedTokenVotingVote,
   ExtendedTokenVotingVoter,
 } from '../helpers/extended-schema';
-import {createDummyActions} from '../utils';
 import {bigInt, BigInt} from '@graphprotocol/graph-ts';
 import {assert, clearStore, describe, test} from 'matchstick-as/assembly/index';
+import {createDummyAction} from '@aragon/osx-commons-subgraph';
 
-let actions = createDummyActions(DAO_TOKEN_ADDRESS, '0', '0x00000000');
+let actions = createDummyAction(DAO_TOKEN_ADDRESS, '0', '0x00000000');
 
 test('Run TokenVoting (handleProposalCreated) mappings with mock event', () => {
   // create state

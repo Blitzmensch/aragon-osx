@@ -60,7 +60,6 @@ import {
   ExtendedNativeTransfer,
 } from '../helpers/extended-schema';
 import {
-  createDummyActions,
   createERC1155TokenCalls,
   createTokenCalls,
 } from '../utils';
@@ -81,6 +80,7 @@ import {
   generateTokenIdBalanceEntityId,
   generateTransactionActionsProposalEntityId,
   generateTransferEntityId,
+  createDummyAction,
 } from '@aragon/osx-commons-subgraph';
 import {Address, Bytes, BigInt, ethereum} from '@graphprotocol/graph-ts';
 import {
@@ -120,7 +120,7 @@ function createExecutedEvent(
       isDynamic
     );
 
-    let action = createDummyActions(
+    let action = createDummyAction(
       DAO_TOKEN_ADDRESS,
       '0',
       functionData.toHexString()

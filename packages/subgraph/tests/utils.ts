@@ -74,19 +74,6 @@ export function createWrappedTokenCalls(
   ]);
 }
 
-export function createDummyActions(
-  address: string,
-  value: string,
-  data: string
-): ethereum.Tuple[] {
-  let tuple = new ethereum.Tuple();
-
-  tuple.push(ethereum.Value.fromAddress(Address.fromString(address)));
-  tuple.push(ethereum.Value.fromSignedBigInt(BigInt.fromString(value)));
-  tuple.push(ethereum.Value.fromBytes(Bytes.fromHexString(data) as Bytes));
-
-  return [tuple];
-}
 
 export function createGetProposalCall(
   contractAddress: string,

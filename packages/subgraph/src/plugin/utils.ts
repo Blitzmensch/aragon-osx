@@ -37,6 +37,7 @@ import {
   BigInt,
 } from '@graphprotocol/graph-ts';
 
+
 export const PERMISSION_OPERATIONS = new Map<number, string>()
   .set(0, 'Grant')
   .set(1, 'Revoke')
@@ -201,6 +202,7 @@ export function getPluginInstallationId(
   dao: string,
   plugin: string
 ): Bytes | null {
+  
   let installationIdTupleArray = new ethereum.Tuple();
   installationIdTupleArray.push(
     ethereum.Value.fromAddress(Address.fromString(dao))
